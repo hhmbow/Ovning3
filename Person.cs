@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Övning3
 {
@@ -10,41 +11,49 @@ namespace Övning3
         public class Person
         {
 
-            private int _Age;
-            private string _FName;
-            private string _LName;
-            private int _Height;
-            private int _Weight;
+            private int _age;
+            private string _fName;
+            private string _lName;
+            private double _Height;
+            private double _Weight;
 
-            public int age
+            public int Age
             {
-                get => _Age;
+            get { return _age; }
                 set {
-                _Age = value;
+                if(value <= 0)
+                throw new ArgumentException("Ålder måste vara större än 0.");
+                _age = value;
             }
             }
-            public string fname
+            public string Fname
             {
-                get => _FName;
-                set { 
-                _FName = value;
-            }
-            }
-            public string lname
-            {
-                get => _LName;
+            get { return _fName; }
                 set {
-                _LName = value;
+                _fName = value;
+                if (string.IsNullOrEmpty(value) || value.Length < 2 || value.Length > 10)
+                    throw new ArgumentException("Förnamnet måste vara mellan 2 och 10 tecken långt.");
+                
             }
             }
-            public int height
+            public string Lname
+            {
+                get { return _lName; }
+                set {
+                _lName = value;
+               
+                if (string.IsNullOrEmpty(value) || value.Length < 2 || value.Length > 10)
+                    throw new ArgumentException("Eftenamn måste vara mellan 3 och 15 tecken långt.");
+            }
+            }
+            public double Height
             {
                 get => _Height;
                 set { 
                 _Height = value;
             }
             }
-            public int weight
+            public double Weight
             {
                 get => _Weight;
                 set { 
