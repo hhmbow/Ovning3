@@ -10,7 +10,7 @@ namespace Övning3
   
         public class Person
         {
-
+        
             private int _age;
             private string _fName;
             private string _lName;
